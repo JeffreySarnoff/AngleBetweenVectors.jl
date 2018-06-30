@@ -14,9 +14,11 @@ When computing the arc separating two cartesian vectors, this is robustly stable
 
 ### exports
 
-- angle(point₁::T, point₂::T) where {N, R<:Real, T<:Union{NTuple{N,R}, AbstractArray{R,1}}
+- angle(point₁::T, point₂::T) where T is either 
 
-- angle(n_tuple₁,  n_tuple₂), angle(n_vector₁,  n_vector₂)
+- angle(n_tuple₁,  n_tuple₂)
+
+- angle(n_vector₁,  n_vector₂)
 
 
 ### about
