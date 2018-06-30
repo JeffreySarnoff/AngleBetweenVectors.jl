@@ -25,4 +25,4 @@ When computing the arc separating two cartesian vectors, this is robustly stable
 
 - Vectors are given by their Cartesian coordinates in 2D, 3D or .. N-dimensions.
 
-This approach is the work of Professor William Kahan.
+- This approach is from the work of Professor William Kahan.
