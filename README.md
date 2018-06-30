@@ -12,7 +12,7 @@ When computing the arc separating two cartesian vectors, this is robustly stable
 [![Build Status](https://travis-ci.org/JeffreySarnoff/AngleBetweenVectors.jl.svg?branch=master)](https://travis-ci.org/JeffreySarnoff/AngleBetweenVectors.jl)
 ----
 
-### exports
+### provides
 
 - angle( n_tuple₁  ,  n_tuple₂ )
 
