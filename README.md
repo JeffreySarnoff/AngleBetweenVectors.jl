@@ -9,9 +9,20 @@ When computing the arc separating two cartesian vectors, this is robustly stable
 
 -----
 
-[![Build Status](https://travis-ci.org/JeffreySarnoff/ArbNumerics.jl.svg?branch=master)](https://travis-ci.org/JeffreySarnoff/ArbNumerics.jl)
+[![Build Status](https://travis-ci.org/JeffreySarnoff/AngleBetweenVectors.jl.svg?branch=master)](https://travis-ci.org/JeffreySarnoff/AngleBetweenVectors.jl)
 ----
 
+### exports
+
+_angle(point₁::T , point₂::T) where {N, R<:Real, T<:Union{NTuple{N,R}, AbstractArray{R,1}}_
+
+n_vector₁  n_vector₂   n_tuple₁  n_tuple₂ )_
+
+_angle(point₁ , point₂     n_vector₁  n_vector₂   n_tuple₁  n_tuple₂ )_
+
+_angle(point₁ , point₂     n_vector₁  n_vector₂   n_tuple₁  n_tuple₂ )_
+
+### about
 
 - The shorter of two angle solutions is returned as an unoriented magnitude (0 <= radians < π).
 
