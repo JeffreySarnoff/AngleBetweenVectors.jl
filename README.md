@@ -13,10 +13,10 @@ When computing the arc separating two cartesian vectors, this is robustly stable
 ----
 
 
-- The shorter of two complemetary angle solutions as an unoriented magnitude (always >= zero).
+- The shorter of two angle solutions is returned as an unoriented magnitude (0 <= radians < π).
 
-- Vectors are given by their Cartesian coordinates in 2D, 3D or .. N-dimensions.\
-- Vectors may be given as Tuples or as Array{T,1}s of length N.
+- Vectors are given by their Cartesian coordinates in 2D, 3D or .. N-dimensions.
+- Vectors may be given as Tuples or as Array{T,1}s of length N.1
 
 
 ### notes
