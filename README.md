@@ -2,7 +2,7 @@
 
 ----
 
-#### Copyright © 2015-2018 by Jeffrey Sarnoff.
+#### Copyright ©2018 by Jeffrey Sarnoff.
 ####  This work is released under The MIT License.
 
 When computing the arc separating two cartesian vectors, this is robustly stable where other functions are not.
