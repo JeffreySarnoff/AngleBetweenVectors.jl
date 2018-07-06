@@ -1,6 +1,8 @@
 module AngleBetweenVectors
 
-export angle, PointRepr
+export angle, norm,
+       PointRepresentation,
+
 
 import Base: angle
 
@@ -16,16 +18,15 @@ const InitialPointReprs =
 TypesForPoints = InitialPointReprs
 
 """
-    PointRepresentations{types_representing_points...}
+    PointRepresentation{types_representing_points...}
 
 Generate a `Union` of Point representations.
 
 Interoperable expansion of internal point representations.
 
-PointRepresentions( <your point representation types> }
+PointRepresention( <your point representation types> }
 
 ```
-using LinearAlgebra
 using AngleBetweenPoints
 
 struct Point2D{T}
@@ -33,9 +34,12 @@ struct Point2D{T}
     y::T
 end
 
-LinearAlgebra.norm(pt::Point2D{T}) where {T} = sqrt(pt.x^2 + pt.y^2)
+#  always specialize these two functions
+#  `norm(pt::YourStruct)`, `Tuple(pt::YourStruct)`
 
-Tuple(pt::Point2D{T}) = (pt.x, pt.y)
+norm(pt::Point2D{T}) where {T} = sqrt(pt.x^2 + pt.y^2)
+
+Tuple(pt::Point2D{T}) where {T} = (pt.x, pt.y)
 
 PointRepresentation(Point2D{Float32}, Point2D{Float64})
 
