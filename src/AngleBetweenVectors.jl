@@ -19,7 +19,7 @@ PointRepr{N, R} = Union{ NTuple{N, R}, AbstractArray{R, 1},
 PointRepr{N, R} = Union{NTuple{N, R}, AbstractArray{R, 1}}
 
 """
-    angle( apoint, bpoint)
+    angle( apoint::T, bpoint::T) where {N, R, T<:PointRepr{N,R}}
 
 accurately ascertains the undirected angle between to vectorial points
 """
