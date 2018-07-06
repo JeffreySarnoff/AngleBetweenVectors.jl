@@ -18,6 +18,28 @@ When computing the arc separating two cartesian vectors, this is robustly stable
 
 - angle( n_vector₁ , n_vector₂ )
 
+
+### why use this
+
+```julia
+julia> precise_twothirds_pi = 2*pi/3
+2.0943951023931953
+
+julia> accurate_twothirds_pi = Float64( 2 * BigFloat(pi) / BigFloat(3) )
+2.0943951023931957
+
+julia> prevfloat( accurate_twothirds_pi ) == precise_twothirds_pi
+true
+
+julia> point1, point2 = (1, -1, 0,  0), (0,  1, 0, -1); 
+
+julia> angle(point1, point2)
+2.0943951023931957
+
+julia> angle(point1, point2) == accurate_twothirds_pi
+true
+```
+
 ### exensible
 
 ```julia
@@ -44,28 +66,6 @@ angle_between = angle(point1, point2)
 angle_between / pi == 0.25
 ``` 
  
-
-### why use this
-
-```julia
-julia> precise_twothirds_pi = 2*pi/3
-2.0943951023931953
-
-julia> accurate_twothirds_pi = Float64( 2 * BigFloat(pi) / BigFloat(3) )
-2.0943951023931957
-
-julia> prevfloat( accurate_twothirds_pi ) == precise_twothirds_pi
-true
-
-julia> point1, point2 = (1, -1, 0,  0), (0,  1, 0, -1); 
-
-julia> angle(point1, point2)
-2.0943951023931957
-
-julia> angle(point1, point2) == accurate_twothirds_pi
-true
-```
-
 ### notes
 
 - The shorter of two angle solutions is returned as an unoriented magnitude (0 <= radians < π).
