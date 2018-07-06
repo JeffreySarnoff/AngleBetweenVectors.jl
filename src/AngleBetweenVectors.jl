@@ -1,12 +1,34 @@
+module AngleBetweenVectors
+
+export angle, PointRepr
+
 import Base: angle
 
-using LinearAlgebra
+import LinearAlgebra.norm
 
-function Base.angle(point1::T, point2::T) where {N, R<:Real, T<:Union{NTuple{N,R}, AbstractArray{R,1}}}
-   rescaled_point1 = point1 .* LinearAlgebra.norm(point2)
-   rescaled_point2 = point2 .* LinearAlgebra.norm(point1)
+"""
+    PointRepr{N, R<:Real}
 
-   x = LinearAlgebra.norm(rescaled_point2 .+ rescaled_point1)
-   y = LinearAlgebra.norm(rescaled_point2 .- rescaled_point1)
-   return 2 * atan(y, x)
+Generate a `Union` of Point representations.
+
+Exported for expansion of representations covered.
+
+PointRepr{N, R} = Union{ NTuple{N, R}, AbstractArray{R, 1},
+                         <your point representation types> }
+"""
+PointRepr{N, R} = Union{NTuple{N, R}, AbstractArray{R, 1}}
+
+"""
+    angle( apoint, bpoint)
+
+accurately ascertains the undirected angle between to vectorial points
+"""
+function Base.angle(point1::T, point2::T) where {N, R, T<:PointRepresentation{N, R}}
+   rescaled_point1 = point1 .* norm(point2)
+   rescaled_point2 = point2 .* norm(point1)
+
+   x = norm(rescaled_point2 .+ rescaled_point1)
+   y = norm(rescaled_point2 .- rescaled_point1)
+   
+   return 2 * atan(y / x)
 end
