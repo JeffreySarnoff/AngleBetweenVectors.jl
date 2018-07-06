@@ -44,9 +44,10 @@ Tuple(pt::Point2D{T}) where {T} = (pt.x, pt.y)
 PointRepresentation(Point2D{Float32}, Point2D{Float64})
 
 point1 = Point2D(0.0, 1.0)
-point2 = Point2D(1.0, 0.5)
+point2 = Point2D(1.0, 1.0)
 
 angle_between = angle(point1, point2)
+angle_between / pi == 0.25
 
 """
 function PointRepresentation(point_types...)
