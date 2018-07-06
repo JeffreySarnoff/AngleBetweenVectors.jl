@@ -15,7 +15,7 @@ point3 = (-1.0, 0.0)
 point1 = (1,0,1,0)
 point2 = (0,0,1,1)
 
-@test angle(point1, point) == pi/3.0
+@test angle(point1, point2) == pi/3.0
 
 point1 = (1, -1, 0,  0)
 point2 = (0,  1, 0, -1)
