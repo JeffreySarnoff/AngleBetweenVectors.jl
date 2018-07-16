@@ -2,7 +2,8 @@ desc = "An accurate and stable calculation of the angle separating two vectors."
 keywords = ["angle", "n-dimensional", "accurate", "floating-point", "vectors"]
 name = "AngleBetweenVectors"
 author = "Jeffrey Sarnoff"
-uuid = "fd1a4dde-80a6-11e8-1909-253a5de6f8b3"
+uuid = "ec570357-d46e-52ed-9726-18773498274d"
+repo = "https://github.com/JeffreySarnoff/AngleBetweenVectors.jl.git"
 version = "v0.0.1"
 
 [deps]
