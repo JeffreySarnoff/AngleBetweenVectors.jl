@@ -1,11 +1,11 @@
 # AngleBetweenVectors.jl
 
+#### When computing the arc separating two cartesian vectors, this is robustly stable; others are not.
+
 ----
 
-#### Copyright ©2018 by Jeffrey Sarnoff.
-####  This work is released under The MIT License.
+#### Copyright ©2018 by Jeffrey Sarnoff. &nbsp;&nbsp; This work is released under The MIT License.
 
-When computing the arc separating two cartesian vectors, this is robustly stable where other functions are not.
 
 -----
 
