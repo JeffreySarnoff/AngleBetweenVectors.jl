@@ -14,10 +14,20 @@
 
 ### provides
 
-- angle( n_tuple₁  ,  n_tuple₂ )
+- angle( point₁, point₂ )
+    - points are given as Cartesian coordinates
+    - points may be of any finite dimension >= 2
+    - points may be any type with a Tuple constructor defined
+    
+#### point representations that just work 
 
-- angle( n_vector₁ , n_vector₂ )
-
+- points as Tuples
+- points as NamedTuples
+- points as Vectors
+- points as SVectors (StaticArrays)
+- points as FixedVectors (StaticArrays)
+- points as Point2D (Point2D(x,y))
+- points as Point3D (Point3D(x,y,z))
 
 ### why use this
 
