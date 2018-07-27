@@ -1,7 +1,6 @@
 module AngleBetweenVectors
 
-export angle, PointRepresentation,
-       norm
+export angle, PointRepresentation!
 
 import Base: angle
 
