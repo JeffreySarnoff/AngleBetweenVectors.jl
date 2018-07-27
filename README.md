@@ -19,17 +19,16 @@
 - angle( n_vector₁ , n_vector₂ )
 
 
-### why use this
+### why use thishttps://mail.google.com/mail/u/0/#inbox
 
 ```julia
-julia> precise_twothirds_pi = 2*pi/3
+julia> 
+
+julia> inaccurate_twothirds_pi = 2*pi/3
 2.0943951023931953
 
 julia> accurate_twothirds_pi = Float64( 2 * BigFloat(pi) / BigFloat(3) )
 2.0943951023931957
-
-julia> prevfloat( accurate_twothirds_pi ) == precise_twothirds_pi
-true
 
 julia> point1, point2 = (1, -1, 0,  0), (0,  1, 0, -1); 
 
@@ -73,3 +72,4 @@ angle_between / pi == 0.25
 - Vectors are given by their Cartesian coordinates in 2D, 3D or .. N-dimensions.
 
 - This approach is from the work of Professor William Kahan.
+    - [a more accurate angle](https://people.eecs.berkeley.edu/~wkahan/MathH110/Cross.pdf) (page 15)
