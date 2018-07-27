@@ -5,7 +5,7 @@ export angle, PointRepresentation,
 
 import Base: angle
 
-import LinearAlgebra.norm
+import LinearAlgebra: norm, dot
 
 
 # basic collection of types that may be used to represent points
@@ -45,9 +45,9 @@ PointRepresentation(Point2D{Float32}, Point2D{Float64})
 point1 = Point2D(0.0, 1.0)
 point2 = Point2D(1.0, 1.0)
 
-angle_between = angle(point1, point2)
-angle_between / pi == 0.25
-
+angle(point1, point2) / pi == 0.25
+true
+```
 """
 function PointRepresentation(point_types...)
     global TypesForPoints
@@ -56,6 +56,13 @@ function PointRepresentation(point_types...)
     nothing
 end
 
+#=
+function kahanangle(p,b)
+    y = norm(p./norm(p) .- b./norm(b))
+    x = norm(p./norm(p) .+ b./norm(b))
+    2*atan(y,x)
+end
+=#
 """
     angle( apoint::T, bpoint::T) where {N, R, T<:PointRepr{N,R}}
 
@@ -67,15 +74,17 @@ The angle is taken in the plane that contains both `apoint` and `bpoint`.
 If one of the points is at the origin, the result is undefined.
 """
 function Base.angle(point1::T, point2::T) where {N,R,T<:NTuple{N,R}}
-   rescaled_point1 = point1 .* norm(point2)
-   rescaled_point2 = point2 .* norm(point1)
+   unitvec1 = unitvec(point1)
+   unitvec2 = unitvec(point2)
     
-   normalized_abcissa  = norm(rescaled_point2 .+ rescaled_point1)
-   normalized_ordinate = norm(rescaled_point2 .- rescaled_point1)
+   y = norm(unitvec1 .+ unitvec2)
+   x = norm(unitvec1 .- unitvec2)
    
-   return 2 * atan(normalized_ordinate / normalized_abcissa)
+   return 2 * atan(y, x)
 end
 
 Base.angle(point1::T, point2::T) where {T} = angle(Tuple(point1), Tuple(point2))
+
+@inline unitvec(p) = p ./ norm(p)
 
 end # AngleBetweenVectors
