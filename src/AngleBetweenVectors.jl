@@ -80,8 +80,8 @@ function Base.angle(point1::T, point2::T) where {N,R,T<:NTuple{N,R}}
    y = norm(unitvec1 .+ unitvec2)
    x = norm(unitvec1 .- unitvec2)
    
-   return 2 * atan(y, x)
-end
+   modpi(2 * atan(y, x))
+ end
 
 Base.angle(point1::T, point2::T) where {T} = angle(Tuple(point1), Tuple(point2))
 
