@@ -42,6 +42,7 @@ true
 ### exensible
 
 ```julia
+```
 using AngleBetweenPoints
 
 struct Point2D{T}
@@ -49,14 +50,10 @@ struct Point2D{T}
     y::T
 end
 
-#  always specialize these two functions
-#  `norm(pt::YourStruct)`, `Tuple(pt::YourStruct)`
+#  always specialize the Tuple constructor
+Tuple(point::Point2D{T}) where {T} = (point.x, point.y)
 
-norm(pt::Point2D{T}) where {T} = sqrt(pt.x^2 + pt.y^2)
-
-Tuple(pt::Point2D{T}) where {T} = (pt.x, pt.y)
-
-PointRepresentation(Point2D{Float32}, Point2D{Float64})
+PointRepresentation!(Point2D{Float32}, Point2D{Float64})
 
 point1 = Point2D(0.0, 1.0)
 point2 = Point2D(1.0, 1.0)
@@ -72,18 +69,14 @@ julia> struct NDPoint{N,T}
            value::SArray{Tuple{N}, T, 1, N}
        end
 
-julia> Tuple(p::NDPoint{N,T}) where {N,T} = p.value.data
-Tuple
-julia> norm(p::NDPoint{N,T}) where {N,T} = norm(p.value.data)
-norm (generic function with 19 methods)
-julia> PointRepresentation(NDPoint{N,T}) where {N,T}
+julia> Tuple(p::NDPoint{N,T}) where {N,T} = p.value.data;
+julia> PointRepresentation!(NDPoint{N,T}) where {N,T}
 
 julia> p = NDPoint(SVector(1.0,2.0,3.0,4.0))
 NDPoint{4,Float64}([1.0, 2.0, 3.0, 4.0])
 
 julia> angle(p, p)
 0.0
-
 ```
  
 ### notes
