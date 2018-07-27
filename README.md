@@ -42,7 +42,6 @@ true
 ### exensible
 
 ```julia
-```
 using AngleBetweenPoints
 
 struct Point2D{T}
