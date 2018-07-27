@@ -19,7 +19,7 @@
 - angle( n_vector₁ , n_vector₂ )
 
 
-### why use thishttps://mail.google.com/mail/u/0/#inbox
+### why use this
 
 ```julia
 julia> 
