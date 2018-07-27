@@ -10,9 +10,7 @@ import LinearAlgebra: norm, dot
     angle(point1::T, point2::T) where {T}
 
 Accurately ascertains the undirected angle (0 <= radians < pi)
-between two points given in N-dimensional Cartesian coordinates.
-
-The angle is taken in the plane that contains both rays.
+between two points given in N-dimensional Cartesian coordinates..
 
 If one of the points is at the origin, the result is zero.
 
