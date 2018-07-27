@@ -33,14 +33,10 @@ struct Point2D{T}
     y::T
 end
 
-#  always specialize these two functions
-#  `norm(pt::YourStruct)`, `Tuple(pt::YourStruct)`
+#  always specialize the Tuple constructor
+Tuple(point::Point2D{T}) where {T} = (point.x, point.y)
 
-norm(pt::Point2D{T}) where {T} = sqrt(pt.x^2 + pt.y^2)
-
-Tuple(pt::Point2D{T}) where {T} = (pt.x, pt.y)
-
-PointRepresentation(Point2D{Float32}, Point2D{Float64})
+PointRepresentation!(Point2D{Float32}, Point2D{Float64})
 
 point1 = Point2D(0.0, 1.0)
 point2 = Point2D(1.0, 1.0)
@@ -49,7 +45,7 @@ angle(point1, point2) / pi == 0.25
 true
 ```
 """
-function PointRepresentation(point_types...)
+function PointRepresentation!(point_types...)
     global TypesForPoints
     added_point_types = Union{point_types...,}
     TypesForPoints = Union{TypesForPoints, added_point_types}
@@ -73,17 +69,21 @@ The angle is taken in the plane that contains both `apoint` and `bpoint`.
 
 If one of the points is at the origin, the result is undefined.
 """
-function Base.angle(point1::T, point2::T) where {N,R,T<:NTuple{N,R}}
+function Base.angle(point1::NT, point2::NT) where {N,F,NT<:NTuple{N,F}}
    unitvec1 = unitvec(point1)
    unitvec2 = unitvec(point2)
     
    y = norm(unitvec1 .+ unitvec2)
    x = norm(unitvec1 .- unitvec2)
    
-   modpi(2 * atan(y, x))
+   !finite(x) || !finite(y) && throw(DomainError("finite points only"))
+       
+   a = (2 * atan(y, x))
+   
+   zero(F) <= a < F(pi) ? a : zero(F)
  end
 
-Base.angle(point1::T, point2::T) where {T} = angle(Tuple(point1), Tuple(point2))
+@inline Base.angle(point1::T, point2::T) where {T} = angle(Tuple(point1), Tuple(point2))
 
 @inline unitvec(p) = p ./ norm(p)
 
