@@ -10,7 +10,17 @@
 -----
 
 [![Build Status](https://travis-ci.org/JeffreySarnoff/AngleBetweenVectors.jl.svg?branch=master)](https://travis-ci.org/JeffreySarnoff/AngleBetweenVectors.jl)
+
 ----
+
+
+[AngleBetweenVectors](https://github.com/JeffreySarnoff/AngleBetweenVectors.jl) exports `angle`.  `angle(point1, point2` determines the angle of their separation.   The smaller of the two solutions is used.  `pi` obtains If the points are opposed, [(1,0), (-1,0)]; so `0 <= angle(pa, pb) <= pi`.
+
+This function expects two points from a 2D, 3D .. ManyD space, in Cartesian coordinates.  To use another point representations, just define a `Tuple` constructor for it.  Vectors, NamedTuples and SVectors have this already.
+
+Most software uses `acos(dot(p1, p2) / sqrt(norm(p1) norm(p2))` instead.  While they coincide often; it is exceedingly easy to find cases where `angle` is more accurate and then, usually they differ by a few ulps. Not always.
+
+-----
 
 ### provides
 
@@ -52,13 +62,6 @@ This implementation is more robustly accurate than the usual method.
 You can work with points in 2D, 3D, .. 1000D .. ?.
 
 
------
-
-[AngleBetweenVectors](https://github.com/JeffreySarnoff/AngleBetweenVectors.jl) exports `angle`.  `angle(point1, point2` determines the angle of their separation.   The smaller of the two solutions is used.  `pi` obtains If the points are opposed, [(1,0), (-1,0)]; so `0 <= angle(pa, pb) <= pi`.
-
-This function expects two points of a 2D, 3D .. ManyD space given in rectangular coordinates.  To allow a specific point representation, one defines a `Tuple` constructor for that representation.  That is necessary and  sufficient.  Tuple constructors exists for simple Vectors, NamedTuples and StaticArray's SVectors.
-
-Most software uses `acos(dot(p1, p2) / sqrt(norm(p1) norm(p2))` instead.  Both ways coincided often; yet it is exceedingly easy to find cases where `angle` is more accurate.  Often, they differ by a few ulps. Not always.
 
 -----
 
