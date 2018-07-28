@@ -48,26 +48,10 @@ angle(point1::Point3D{T}, point2::Point3D{T})  where {T}
 
 ### why use it
 
-This implementation is more robustly accurate than the usual (`acos`) method.
+This implementation is more robustly accurate than the usual method.
 
+You can work with points in 2D, 3D, .. 1000D .. ?.
 
-```julia
-julia> 
-
-julia> inaccurate_twothirds_pi = 2*pi/3
-2.0943951023931953
-
-julia> accurate_twothirds_pi = Float64( 2 * BigFloat(pi) / BigFloat(3) )
-2.0943951023931957
-
-julia> point1, point2 = (1, -1, 0,  0), (0,  1, 0, -1); 
-
-julia> angle(point1, point2)
-2.0943951023931957
-
-julia> angle(point1, point2) == accurate_twothirds_pi
-true
-```
 ### notes
 
 - The shorter of two angle solutions is returned as an unoriented magnitude (0 <= radians < π).
