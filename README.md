@@ -25,7 +25,6 @@
 - points as NamedTuples
 - points as Vectors
 - points as SVectors     (StaticArrays)
-- points as FixedVectors (StaticArrays)
 
 #### working with other point representations
 
@@ -57,22 +56,9 @@ You can work with points in 2D, 3D, .. 1000D .. ?.
 
 [AngleBetweenVectors](https://github.com/JeffreySarnoff/AngleBetweenVectors.jl) exports `angle`.  `angle(point1, point2` determines the angle of their separation.   The smaller of the two solutions is used.  `pi` obtains If the points are opposed, [(1,0), (-1,0)]; so `0 <= angle(pa, pb) <= pi`.
 
-This function expects two points of a 2D, 3D .. ManyD space given in rectangular coordinates.  To allow a specific point representation, one defines a `Tuple` constructor for that representation.  That is necessary and  sufficient.  Tuple constructors exists for simple Vectors, NamedTuples and StaticArray's SVectors.  For a Point2D struct, just do this:
-
-```julia
-struct Point2D{T}
-    x::T
-    y::T
-end
-
-Tuple(pt::Point2D{T}) = (pt.x, pt.y)
-```
-
-`angle`implements the expression given by Professor Kahan in [Computing Cross-Products and Rotations]( https://people.eecs.berkeley.edu/%7Ewkahan/MathH110/Cross.pdf) (pg 15): "More uniformly accurate .. valid for  Euclidean  spaces of any dimension,   it never errs by more than a modest multiple of ε."  
+This function expects two points of a 2D, 3D .. ManyD space given in rectangular coordinates.  To allow a specific point representation, one defines a `Tuple` constructor for that representation.  That is necessary and  sufficient.  Tuple constructors exists for simple Vectors, NamedTuples and StaticArray's SVectors.
 
 Most software uses `acos(dot(p1, p2) / sqrt(norm(p1) norm(p2))` instead.  Both ways coincided often; yet it is exceedingly easy to find cases where `angle` is more accurate.  Often, they differ by a few ulps. Not always.
-
-This improves proximal correctness.
 
 -----
 
@@ -84,5 +70,4 @@ This improves proximal correctness.
 
 - Vectors are given by their Cartesian coordinates in 2D, 3D or .. N-dimensions.
 
-- This approach is from the work of Professor William Kahan.
-    - [a more accurate angle](https://people.eecs.berkeley.edu/~wkahan/MathH110/Cross.pdf) (page 15)
+- `angle`implements the expression given by Professor Kahan in [Computing Cross-Products and Rotations]( https://people.eecs.berkeley.edu/%7Ewkahan/MathH110/Cross.pdf) (pg 15): "More uniformly accurate .. valid for  Euclidean  spaces of any dimension,   it never errs by more than a modest multiple of ε."  
