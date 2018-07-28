@@ -46,7 +46,10 @@ Base.Tuple(a::Point3D{T}) where {T} = (a.x, a.y, a.z)
 angle(point1::Point3D{T}, point2::Point3D{T})  where {T}
 ```
 
-### why use this
+### why use it
+
+This implementation is more robustly accurate than the usual (`acos`) method.
+
 
 ```julia
 julia> 
@@ -65,44 +68,6 @@ julia> angle(point1, point2)
 julia> angle(point1, point2) == accurate_twothirds_pi
 true
 ```
-
-### exensible
-
-```julia
-using AngleBetweenPoints
-
-struct Point2D{T}
-    x::T
-    y::T
-end
-
-#  always specialize the Tuple constructor
-Tuple(point::Point2D{T}) where {T} = (point.x, point.y)
-
-point1 = Point2D(0.0, 1.0)
-point2 = Point2D(1.0, 1.0)
-
-angle(point1, point2) / pi == 0.25
-true
-``` 
-
-```
-julia> using StaticArrays
-
-julia> struct NDPoint{N,T}
-           value::SArray{Tuple{N}, T, 1, N}
-       end
-
-#  always specialize the Tuple constructor
-julia> Tuple(p::NDPoint{N,T}) where {N,T} = p.value.data;
-
-julia> p = NDPoint(SVector(1.0,2.0,3.0,4.0))
-NDPoint{4,Float64}([1.0, 2.0, 3.0, 4.0])
-
-julia> iszero(angle(p, p))
-true
-```
- 
 ### notes
 
 - The shorter of two angle solutions is returned as an unoriented magnitude (0 <= radians < π).
