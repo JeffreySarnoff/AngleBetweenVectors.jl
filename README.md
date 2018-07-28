@@ -73,4 +73,4 @@ You can work with points in 2D, 3D, .. 1000D .. ?.
 
 - Vectors are given by their Cartesian coordinates in 2D, 3D or .. N-dimensions.
 
-- `angle`ises the expression given by Professor Kahan in [Computing Cross-Products and Rotations]( https://people.eecs.berkeley.edu/%7Ewkahan/MathH110/Cross.pdf) (pg 15): "More uniformly accurate .. valid for  Euclidean  spaces of any dimension,   it never errs by more than a modest multiple of ε."  
+- This follows a note by Professor Kahan in [Computing Cross-Products and Rotations]( https://people.eecs.berkeley.edu/%7Ewkahan/MathH110/Cross.pdf) (pg 15): "More uniformly accurate .. valid for  Euclidean  spaces of any dimension,   it never errs by more than a modest multiple of ε."  
