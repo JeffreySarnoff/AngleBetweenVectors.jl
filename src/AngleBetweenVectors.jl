@@ -25,7 +25,7 @@ function angle(point1::NT, point2::NT) where {N,F,NT<:NTuple{N,F}}
           
    a = (2 * atan(y, x))
    
-   zero(F) <= a <= F(pi) ? a : zero(F)
+   zero(F) <= a <= (F<:Integer ? Float64(pi) : F(pi)) ? a : zero(F)
 end
 
 @inline angle(point1::T, point2::T) where {T} = angle(Tuple(point1), Tuple(point2))
