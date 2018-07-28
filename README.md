@@ -24,10 +24,27 @@
 - points as Tuples
 - points as NamedTuples
 - points as Vectors
-- points as SVectors (StaticArrays)
+- points as SVectors     (StaticArrays)
 - points as FixedVectors (StaticArrays)
-- points as Point2D (Point2D(x,y))
-- points as Point3D (Point3D(x,y,z))
+
+#### working with other point representations
+
+Just define a `Tuple` constructor for the representation.  That's all.
+
+```julia
+# working with this?
+struct Point3D{T}
+    x::T
+    y::T
+    z::T
+end
+
+#  define this:
+Base.Tuple(a::Point3D{T}) where {T} = (a.x, a.y, a.z)
+
+#  this just works:
+angle(point1::Point3D{T}, point2::Point3D{T})  where {T}
+```
 
 ### why use this
 
