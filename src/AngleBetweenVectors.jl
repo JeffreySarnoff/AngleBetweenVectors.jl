@@ -25,7 +25,7 @@ function angle(point1::NT, point2::NT) where {N,F<:AbstractFloat,NT<:NTuple{N,F}
           
     a = 2 * atan(norm(y) / norm(x))
    
-    0.0 <= a <= F(pi) ? a :  max(0.0, min(a, F(pi)))
+    !signbit(a) && !(signbit(F(pi) - a)) ? a : (signbit(a) ? zero(F) : F(pi))
 end
 
 function angle(point1::NT, point2::NT) where {N,F<:Integer,NT<:NTuple{N,F}}
@@ -37,7 +37,7 @@ function angle(point1::NT, point2::NT) where {N,F<:Integer,NT<:NTuple{N,F}}
           
     a = 2 * atan(norm(y) / norm(x))
    
-    0.0 <= a <= pi ? a :  max(0.0, min(a, pi))
+    !signbit(a) && !(signbit(Float64(pi) - a)) ? a : (signbit(a) ? zero(F) : Float64(pi))
 end
 
 @inline angle(point1::T, point2::T) where {T} = angle(Tuple(point1), Tuple(point2))
