@@ -1,6 +1,6 @@
 module AngleBetweenVectors
 
-export angle, angle2
+export angle, fastangle
 
 import Base: angle
 
@@ -15,7 +15,7 @@ const PI = Float64(pi)
 Accurately ascertains the undirected angle (0 <= radians < pi)
 between two points given in N-dimensional Cartesian coordinates.
 
-Prefer this to `angle2` for highest accuracy.  Suggested
+Prefer this to `fastangle` for highest accuracy.  Suggested
 when |coordinates| may be outside 2^±20 or [1/1_000_000,1_000_000].
 Strongly recommended when any |coordinates| are outside 2^±24 or
 [1/16_000_000,16_000_000].
@@ -38,7 +38,7 @@ end
 
 
 """
-    angle2(point1::T, point2::T) where {T}
+    fastangle(point1::T, point2::T) where {T}
 
 Accurately ascertains the undirected angle (0 <= radians < pi)
 between two points given in N-dimensional Cartesian coordinates.
@@ -52,7 +52,7 @@ If one of the points is at the origin, the result is zero.
 
 You *must* define a tuple constructor `Tuple(x::T) = ...`.
 """
-function angle2(point1::NT, point2::NT) where {N,T,NT<:NTuple{N,T}}
+function fastangle(point1::NT, point2::NT) where {N,T,NT<:NTuple{N,T}}
     point1a = point1 .* norm(point2)
     point2a = point2 .* norm(point1)
     
@@ -65,7 +65,7 @@ function angle2(point1::NT, point2::NT) where {N,T,NT<:NTuple{N,T}}
 end
 
 @inline angle(point1::T, point2::T) where {T} = angle(Tuple(point1), Tuple(point2))
-@inline angle2(point1::T, point2::T) where {T} = angle2(Tuple(point1), Tuple(point2))
+@inline fastangle(point1::T, point2::T) where {T} = fastangle(Tuple(point1), Tuple(point2))
 
 @inline unitvec(p) = p ./ norm(p)
 
