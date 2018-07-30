@@ -30,16 +30,14 @@ Most software uses `acos(dot(p1, p2) / sqrt(norm(p1) norm(p2))` instead.  While 
     - points may be of any finite dimension >= 2
     - points may be any type with a Tuple constructor defined
 
-- `angle` is the most accurate
-> Prefer this to `angle2` for highest accuracy.  Suggested
+Prefer `angle` to `angle2` for highest accuracy.  Suggested
 when |coordinates| may be outside 2^±20 or [1/1_000_000,1_000_000].
 Strongly recommended when any |coordinates| are outside 2^±24 or
 [1/16_000_000,16_000_000].
 
-- `angle2` is the more performant
-> Prefer this to `angle` for highest performance. Works best
+Prefer `angle2` to `angle` for highest performance. Works best
 where all |coordinates| are in 2^±12 or [1/4_000,4_000].
-Use `angle2` where |coordinates| may be outside 2^±20 or
+Use `angle` where |coordinates| may be outside 2^±20 or
 [1/1_000_000,1_000_000]. 
 
 #### point representations that just work 
