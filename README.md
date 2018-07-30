@@ -25,7 +25,7 @@ Most software uses `acos(dot(p1, p2) / sqrt(norm(p1) norm(p2))` instead.  While 
 
 ### provides
 
-- angle( point₁, point₂ ), angle2( point₁, point₂ )
+- `angle( point₁, point₂ )`, `angle2( point₁, point₂ )`
     - points are given as Cartesian coordinates
     - points may be of any finite dimension >= 2
     - points may be any type with a Tuple constructor defined
