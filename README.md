@@ -14,8 +14,8 @@
 ----
 
 
-[AngleBetweenVectors](https://github.com/JeffreySarnoff/AngleBetweenVectors.jl) exports `angle` and `angle2`.
-`angle(point1, point2)` determines the angle of their separation.   The smaller of the two solutions is used.  `π` obtains If the points are opposed, [(1,0), (-1,0)]; so `0 <= angle(p1, p2) <= pi`.  The same holds for `angle2`.
+[AngleBetweenVectors](https://github.com/JeffreySarnoff/AngleBetweenVectors.jl) exports `angle` and `fastangle`.
+`angle(point1, point2)` determines the angle of their separation.   The smaller of the two solutions is used.  `π` obtains If the points are opposed, [(1,0), (-1,0)]; so `0 <= angle(p1, p2) <= pi`.  The same holds for `fastangle`.
 
 This function expects two points from a 2D, 3D .. ManyD space, in Cartesian coordinates.  To use another point representations, just define a `Tuple` constructor for it.  Vectors, NamedTuples and SVectors have this already.
 
@@ -25,20 +25,20 @@ Most software uses `acos(dot(p1, p2) / sqrt(norm(p1) norm(p2))` instead.  While 
 
 ### provides
 
-- `angle( point₁, point₂ )`, `angle2( point₁, point₂ )`
+- `angle( point₁, point₂ )`, `fastangle( point₁, point₂ )`
     - points are given as Cartesian coordinates
     - points may be of any finite dimension >= 2
     - points may be any type with a Tuple constructor defined
 
-Prefer `angle` to `angle2` for highest accuracy.  Suggested
+Prefer `angle` to `fastangle` for highest accuracy.  Suggested
 when |coordinates| may be outside 2^±20 or [1/1_000_000,1_000_000].
 Strongly recommended when any |coordinates| are outside 2^±24 or
 [1/16_000_000,16_000_000].
 
-Prefer `angle2` to `angle` for highest performance. Works best
+Prefer `fastangle` to `angle` for highest performance. Works best
 where all |coordinates| are in 2^±12 or [1/4_000,4_000].
 Use `angle` where |coordinates| may be outside 2^±20 or
-[1/1_000_000,1_000_000]. 
+[1/1_000_000,1_000_000].
 
 #### point representations that just work 
 
