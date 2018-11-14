@@ -1,12 +1,13 @@
 module AngleBetweenVectors
 
-export angle, fastangle
+export angle
 
 import Base: angle
 
 import LinearAlgebra: norm, dot
 
-const PI = Float64(pi)
+
+@inline unitvec(p) = p ./ norm(p)
 
 
 """
@@ -33,9 +34,14 @@ function angle(point1::NT, point2::NT) where {N,T,NT<:NTuple{N,T}}
           
     a = 2 * atan(norm(y) / norm(x))
    
-    !signbit(a) && !(signbit(PI - a)) ? a : (signbit(a) ? zero(F) : PI)
+    !signbit(a) && !(signbit(T(pi) - a)) ? a : (signbit(a) ? zero(T) : T(pi))
 end
 
+@inline angle(point1::V, point2::V) where {T, V<:Vector{T}} = angle(Tuple(point1), Tuple(point2))
+@inline angle(point1::T, point2::T) where {T} = angle(Tuple(point1), Tuple(point2))
+
+
+#=
 
 """
     fastangle(point1::T, point2::T) where {T}
@@ -64,9 +70,8 @@ function fastangle(point1::NT, point2::NT) where {N,T,NT<:NTuple{N,T}}
     2 * atan(sqrt(subpoints ./ addpoints))
 end
 
-@inline angle(point1::T, point2::T) where {T} = angle(Tuple(point1), Tuple(point2))
-@inline fastangle(point1::T, point2::T) where {T} = fastangle(Tuple(point1), Tuple(point2))
 
-@inline unitvec(p) = p ./ norm(p)
+@inline fastangle(point1::T, point2::T) where {T} = fastangle(Tuple(point1), Tuple(point2))
+=#
 
 end # AngleBetweenVectors
