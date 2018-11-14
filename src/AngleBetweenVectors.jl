@@ -42,17 +42,22 @@ end
 
 
 #=
-
+fastangle needs to be considerably faster
 """
     fastangle(point1::T, point2::T) where {T}
 
 Accurately ascertains the undirected angle (0 <= radians < pi)
 between two points given in N-dimensional Cartesian coordinates.
 
-Prefer this to `angle` for highest performance. Works best
+Prefer `angle` to `fastangle` for highest accuracy.  Suggested
+when |coordinates| may be outside 2^±20 or [1/1_000_000,1_000_000].
+Strongly recommended when any |coordinates| are outside 2^±24 or
+[1/16_000_000,16_000_000].
+
+Prefer `fastangle` to `angle` for highest performance. Works best
 where all |coordinates| are in 2^±12 or [1/4_000,4_000].
 Use `angle` where |coordinates| may be outside 2^±20 or
-[1/1_000_000,1_000_000]. 
+[1/1_000_000,1_000_000].
 
 If one of the points is at the origin, the result is zero.
 
