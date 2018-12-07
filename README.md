@@ -14,7 +14,7 @@
 ----
 
 
-[AngleBetweenVectors](https://github.com/JeffreySarnoff/AngleBetweenVectors.jl) exports `angle` and `fastangle`.
+[AngleBetweenVectors](https://github.com/JeffreySarnoff/AngleBetweenVectors.jl) exports `angle`.
 `angle(point1, point2)` determines the angle of their separation.   The smaller of the two solutions is used.  `π` obtains If the points are opposed, [(1,0), (-1,0)]; so `0 <= angle(p1, p2) <= pi`.  The same holds for `fastangle`.
 
 This function expects two points from a 2D, 3D .. ManyD space, in Cartesian coordinates.  To use another point representations, just define a `Tuple` constructor for it.  Vectors, NamedTuples and SVectors have this already.
