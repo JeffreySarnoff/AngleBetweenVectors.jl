@@ -15,9 +15,9 @@
 
 
 [AngleBetweenVectors](https://github.com/JeffreySarnoff/AngleBetweenVectors.jl) exports `angle`.
-`angle(point1, point2)` determines the angle of their separation.   The smaller of the two solutions is used.  `π` obtains If the points are opposed, [(1,0), (-1,0)]; so `0 <= angle(p1, p2) <= pi`.  The same holds for `fastangle`.
+`angle(point1, point2)` determines the angle of their separation.   The smaller of the two solutions is used.  `π` obtains If the points are opposed, [(1,0), (-1,0)]; so `0 <= angle(p1, p2) <= pi`.
 
-This function expects two points from a 2D, 3D .. ManyD space, in Cartesian coordinates.  To use another point representations, just define a `Tuple` constructor for it.  Vectors, NamedTuples and SVectors have this already.
+This function expects two points from a 2D, 3D .. ManyD space, in Cartesian coordinates.  Tuples and Vectors are handled immediately (prefer Tuples for speed). To use another point representations, just define a `Tuple` constructor for it.  NamedTuples and SVectors have this already.
 
 Most software uses `acos(dot(p1, p2) / sqrt(norm(p1) norm(p2))` instead.  While they coincide often; it is exceedingly easy to find cases where `angle` is more accurate and then, usually they differ by a few ulps. Not always.
 
