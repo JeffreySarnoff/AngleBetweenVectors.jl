@@ -29,12 +29,12 @@ You *must* define a tuple constructor `Tuple(x::T) = ...` if one does not alread
 function angle(point1::NT, point2::NT) where {N,T,NT<:NTuple{N,T}}
     unitvec1 = unitvec(point1)
     unitvec2 = unitvec(point2)
-    
+
     y = unitvec1 .- unitvec2
     x = unitvec1 .+ unitvec2
-          
+
     a = 2 * atan(norm(y) / norm(x))
-   
+
     !signbit(a) && !(signbit(T(pi) - a)) ? a : (signbit(a) ? zero(T) : T(pi))
 end
 
