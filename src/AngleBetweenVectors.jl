@@ -1,7 +1,5 @@
 module AngleBetweenVectors
 
-export angle
-
 import Base: angle
 
 import LinearAlgebra: norm
@@ -35,7 +33,7 @@ function angle(point1::NT, point2::NT) where {N,T,NT<:NTuple{N,T}}
 
     a = 2 * atan(norm(y) / norm(x))
 
-    !signbit(a) && !(signbit(T(pi) - a)) ? a : (signbit(a) ? zero(T) : T(pi))
+    !(signbit(a) || signbit(T(pi) - a)) ? a : (signbit(a) ? zero(T) : T(pi))
 end
 
 @inline angle(point1::V, point2::V) where {T, V<:Vector{T}} = angle(Tuple(point1), Tuple(point2))
