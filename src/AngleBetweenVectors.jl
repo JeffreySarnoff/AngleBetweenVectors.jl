@@ -4,7 +4,7 @@ export angle
 
 import Base: angle
 
-import LinearAlgebra: norm, dot
+import LinearAlgebra: norm
 
 
 @inline unitvec(p) = p ./ norm(p)
