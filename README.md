@@ -4,7 +4,7 @@
 
 ----
 
-#### Copyright ©&thinsp;2018 by Jeffrey Sarnoff. &nbsp;&nbsp; This work is released under The MIT License.
+#### Copyright ©&thinsp;2018-2019 by Jeffrey Sarnoff. &nbsp;&nbsp; This work is released under The MIT License.
 
 
 -----
