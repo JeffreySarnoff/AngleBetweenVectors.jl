@@ -1,4 +1,4 @@
 buttons:
   - title: VersionTags
-    action: "tag_new_version"
+    action: "run_tests"
     description: Tag a new version fo release
