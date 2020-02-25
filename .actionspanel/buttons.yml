@@ -1,0 +1,4 @@
+buttons:
+  - title: VersionTags
+    action: "tag_new_version"
+    description: Tag a new version fo release
