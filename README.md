@@ -4,10 +4,9 @@
 
 ----
 
-#### Copyright ©&thinsp;2018-2019 by Jeffrey Sarnoff. &nbsp;&nbsp; This work is released under The MIT License.
+#### Copyright ©&thinsp;2018-2020 by Jeffrey Sarnoff. &nbsp;&nbsp; This work is released under The MIT License.
 
 ----
-[![Actions Panel](https://img.shields.io/badge/actionspanel-enabled-brightgreen)](https://www.actionspanel.app/app/phunki/actionspanel)-----
 
 [![Build Status](https://travis-ci.org/JeffreySarnoff/AngleBetweenVectors.jl.svg?branch=master)](https://travis-ci.org/JeffreySarnoff/AngleBetweenVectors.jl)
 
