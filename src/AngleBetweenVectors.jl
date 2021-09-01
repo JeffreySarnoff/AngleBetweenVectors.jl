@@ -24,7 +24,16 @@ If one of the points is at the origin, the result is zero.
 
 You *must* define a tuple constructor `Tuple(x::YourPointType) = ...` if one does not already exist.
 """
-function angle(point1::A, point2::A) where {N,T<:Real,NT<:NTuple{N,T}, V<:Vector{T}, A<:Union{NT,V}}
+angle(tuple1::NTuple{N,T}, tuple2::NTuple{N,T}) where {N, T<:AbstractFloat} = angle(T, tuple1, tuple2)
+
+# because of the broadcasts .- and .+ below, it is essential to check size compatibility
+# for arrays, whereas for tuples the consistency ensured by the "N" in the type
+function angle(a1::AbstractArray{T}, a2::AbstractArray{T}) where {D, T<:AbstractFloat}
+	size(a1) == size(a2) || throw(DimensionMismatch())
+    return angle(T, a1, a2)
+end
+
+function angle(::Type{T}, point1, point2) where {T<:AbstractFloat}
     unitpoint1 = unitize(point1)
     unitpoint2 = unitize(point2)
 
@@ -34,6 +43,12 @@ function angle(point1::A, point2::A) where {N,T<:Real,NT<:NTuple{N,T}, V<:Vector
     a = 2 * atan(norm(y) / norm(x))
 
     !(signbit(a) || signbit(T(pi) - a)) ? a : (signbit(a) ? zero(T) : T(pi))
+end
+
+# this method allows the arrays to have different types, even non-float types
+function angle(a1::AbstractArray{T1}, a2::AbstractArray{T2}) where {T1 <: Real, T2 <: Real}
+    T = float(promote_type(T1, T2)) # the "T" for T(pi) must be a float type
+    return angle(convert(AbstractArray{T}, a1), convert(AbstractArray{T}, a2))
 end
 
 @inline angle(point1::T, point2::T) where {T} = angle(Tuple(point1), Tuple(point2))

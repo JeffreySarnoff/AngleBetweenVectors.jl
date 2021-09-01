@@ -18,3 +18,8 @@ point2 = (0.0,  1.0, 0.0, -1.0)
 # note: 2pi/3 !== Float64(2*BigFloat(pi)/3)
 @test angle(point1, point2) == Float64(2*BigFloat(pi)/3)
 @test angle(point1, point2) == angle(point2, point1)
+
+@test (@inferred angle(1:3, 1:3)) == 0.0f0
+@test (@inferred angle(0:1, -1:0)) == pi/2
+@test (@inferred angle(0:1, -1.0:0.0)) == pi/2
+@test (@inferred angle(Real[0.0 1], Int16[-1 0])) == pi/2
