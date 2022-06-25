@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it using these metadata.
+title: AngleBetweenVectors
+abstract: Compute the arc separating two cartesian vectors in a stable and robust manner.
+authors:
+  - given-names: Jeffrey
+    family-names: Sarnoff
+    email: "jeffrey.sarnoff@gmail.com"
+    affiliation: "Julia Innovator"
+type: software
+url: "https://github.com/JeffreySarnoff/AngleBetweenVectors.jl"
+repository-code: "https://github.com/JeffreySarnoff/AngleBetweenVectors.jl"
+version: 0.3.1
+date-released: 2022-06-25
+license: MIT
