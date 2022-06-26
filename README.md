@@ -9,10 +9,10 @@
 [![Build Status](https://travis-ci.org/JeffreySarnoff/AngleBetweenVectors.jl.svg?branch=master)](https://travis-ci.org/JeffreySarnoff/AngleBetweenVectors.jl)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6745689.svg)](https://doi.org/10.5281/zenodo.6745689)
 
-##### preferred citation
+##### preferred citiation
 ```
 Sarnoff, Jeffrey (2022). AngleBetweenVectors (Version 0.3.1) [Source Code].
-Open source at  https://github.com/JeffreySarnoff/AngleBetweenVectors.jl
+Open access at  https://github.com/JeffreySarnoff/AngleBetweenVectors.jl
 https://doi.org/10.5281/zenodo.6745689
 ```
 
