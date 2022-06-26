@@ -8,6 +8,7 @@ authors:
     email: "jeffrey.sarnoff@gmail.com"
     affiliation: "Julia Innovator"
 type: software
+doi: "10.5281/zenodo.6745689"
 url: "https://github.com/JeffreySarnoff/AngleBetweenVectors.jl"
 repository-code: "https://github.com/JeffreySarnoff/AngleBetweenVectors.jl"
 version: 0.3.1
