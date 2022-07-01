@@ -2,10 +2,11 @@ module AngleBetweenVectors
 
 import Base: angle
 
-import LinearAlgebra: norm
+@inline norm2(p::P) where {P<:Union{NTuple{N,T}, AbstractVector{T}}} where {N,T} =
+    sqrt(foldl(+, abs2.(p)))
 
-
-@inline unitize(p) = p ./ norm(p)
+@inline unitize(p::P) where {P<:Union{NTuple{N,T}, AbstractVector{T}}} where {N,T} = 
+    p ./ norm2(p)
 
 """
     angle(point1::T, point2::T) where {T}
@@ -24,18 +25,18 @@ If one of the points is at the origin, the result is zero.
 
 You *must* define a tuple constructor `Tuple(x::YourPointType) = ...` if one does not already exist.
 """
-function angle(point1::A, point2::A) where {N,T<:Real,NT<:NTuple{N,T}, V<:Vector{T}, A<:Union{NT,V}}
+function angle(point1::P, point2::P) where {P<:Union{NTuple{N,T}, AbstractVector{T}}} where {N,T}
     unitpoint1 = unitize(point1)
     unitpoint2 = unitize(point2)
 
     y = unitpoint1 .- unitpoint2
     x = unitpoint1 .+ unitpoint2
 
-    a = 2 * atan(norm(y) / norm(x))
+    a = 2 * atan(norm2(y) / norm2(x))
 
-    !(signbit(a) || signbit(T(pi) - a)) ? a : (signbit(a) ? zero(T) : T(pi))
+    !(signbit(a) || signbit(float(T)(pi) - a)) ? a : (signbit(a) ? zero(T) : float(T)(pi))
 end
 
-@inline angle(point1::T, point2::T) where {T} = angle(Tuple(point1), Tuple(point2))
+angle(point1::T, point2::T) where {T} = angle(Tuple(point1), Tuple(point2))
 
 end # AngleBetweenVectors
