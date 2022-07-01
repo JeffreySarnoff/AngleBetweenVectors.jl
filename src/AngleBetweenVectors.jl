@@ -2,10 +2,10 @@ module AngleBetweenVectors
 
 import Base: angle
 
-import LinearAlgebra: norm
+const FiniteSeq = Union{NTuple{N,T}, AbstractVector{T}} where {N,T}
 
-
-@inline unitize(p) = p ./ norm(p)
+@inline norm2(p::P) where {N,T,P<:FiniteSeq} = sqrt(foldl(+, abs2.(p)))
+@inline unitize(p::P) where {N,T,P<:FiniteSeq} = p ./ norm2(p)
 
 """
     angle(point1::T, point2::T) where {T}
@@ -31,11 +31,11 @@ function angle(point1::A, point2::A) where {N,T<:Real,NT<:NTuple{N,T}, V<:Vector
     y = unitpoint1 .- unitpoint2
     x = unitpoint1 .+ unitpoint2
 
-    a = 2 * atan(norm(y) / norm(x))
+    a = 2 * atan(norm2(y) / norm2(x))
 
     !(signbit(a) || signbit(T(pi) - a)) ? a : (signbit(a) ? zero(T) : T(pi))
 end
 
-@inline angle(point1::T, point2::T) where {T} = angle(Tuple(point1), Tuple(point2))
+angle(point1::T, point2::T) where {T} = angle(Tuple(point1), Tuple(point2))
 
 end # AngleBetweenVectors
