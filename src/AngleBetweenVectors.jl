@@ -32,7 +32,7 @@ function angle(point1::P, point2::P) where {P<:Union{NTuple{N,T}, AbstractVector
     y = unitpoint1 .- unitpoint2
     x = unitpoint1 .+ unitpoint2
 
-    a = 2 * atan(norm2(y) / norm2(x))
+    a = 2 * atan(norm2(y), norm2(x))
 
     !(signbit(a) || signbit(float(T)(pi) - a)) ? a : (signbit(a) ? zero(T) : float(T)(pi))
 end
