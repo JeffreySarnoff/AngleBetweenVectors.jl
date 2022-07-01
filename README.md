@@ -76,7 +76,7 @@ You can work with points in 2D, 3D, .. 1000D .. ?.
 
 ### notes
 
-- The shorter of two angle solutions is returned as an unoriented magnitude (0 <= radians < π).
+- The shorter of two angles is given as an unoriented magnitude (0 <= radians < π).
 
 - Vectors are given by their Cartesian coordinates in 2D, 3D or .. N-dimensions.
 
