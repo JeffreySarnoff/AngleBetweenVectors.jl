@@ -7,6 +7,7 @@
 #### Copyright ©&thinsp;2018-2022 by Jeffrey Sarnoff. &nbsp;&nbsp; This work is released under The MIT License.
 
 [![Build Status](https://travis-ci.org/JeffreySarnoff/AngleBetweenVectors.jl.svg?branch=master)](https://travis-ci.org/JeffreySarnoff/AngleBetweenVectors.jl)
+[![Coverage Status](https://coveralls.io/repos/github/JeffreySarnoff/AngleBetweenVectors.jl/badge.svg?branch=main)](https://coveralls.io/github/JeffreySarnoff/AngleBetweenVectors.jl?branch=main)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6745689.svg)](https://doi.org/10.5281/zenodo.6745689)
 
 ##### preferred citiation
