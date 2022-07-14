@@ -1,6 +1,8 @@
 using AngleBetweenVectors
 using Test
 
+@testset "Angles" begin
+
 point1 = (1.0, 0.0)
 point2 = (0.0, 1.0)
 point3 = (-1.0, 0.0)
@@ -18,3 +20,5 @@ point2 = (0.0,  1.0, 0.0, -1.0)
 # note: 2pi/3 !== Float64(2*BigFloat(pi)/3)
 @test angle(point1, point2) == Float64(2*BigFloat(pi)/3)
 @test angle(point1, point2) == angle(point2, point1)
+
+end
