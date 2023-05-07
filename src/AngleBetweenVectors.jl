@@ -9,7 +9,9 @@ import Base: angle
     p ./ norm2(p)
 
 """
-    angle(point1::T, point2::T) where {T}
+!!FIXME
+
+angle(point1::T, point2::T) where {T}
 
 Accurately ascertains the undirected angle (0 <= radians < pi)
 between two points given in N-dimensional Cartesian coordinates.
