@@ -4,7 +4,7 @@ name = "AngleBetweenVectors"
 author = "Jeffrey Sarnoff <jeffrey.sarnoff@gmail.com>"
 uuid = "ec570357-d46e-52ed-9726-18773498274d"
 repo = "https://github.com/JeffreySarnoff/AngleBetweenVectors.jl.git"
-version = "v0.4.1"
+version = "v0.4.0"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
